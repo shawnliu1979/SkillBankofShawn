@@ -13,6 +13,7 @@ import re
 from datetime import date, datetime, time
 from pathlib import Path
 from typing import Iterable, Sequence
+from urllib.parse import quote
 
 
 SUPPORTED_DIRECT = {".xlsx", ".xlsm"}
@@ -162,11 +163,8 @@ def export_images(worksheet, image_directory: Path) -> list[Path]:
 
 
 def markdown_destination(path: str) -> str:
-    """Wrap destinations that Markdown would otherwise parse ambiguously."""
-    reserved_characters = "()<>[]#?&=;%"
-    if any(character.isspace() or character in reserved_characters for character in path):
-        return f"<{path}>"
-    return path
+    """Encode a relative path for use as a Markdown URL destination."""
+    return quote(path, safe="/")
 
 
 def worksheet_markdown(title: str, rows: Iterable[Sequence[object]], image_paths: Sequence[Path], output_path: Path) -> str:
