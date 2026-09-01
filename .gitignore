@@ -430,3 +430,6 @@ FodyWeavers.xsd
 
 # ------Warehouse rules
 ___unMaintenanceSkill/
+.gradle
+.idea
+build/
