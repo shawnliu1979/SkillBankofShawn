@@ -1,0 +1,22 @@
+# 运行产物
+out/
+rh_workflows/
+*.log
+*.mp4
+*.png
+*.jpg
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 环境与密钥
+.env
+.env.*
+*.key
+
+# 系统
+.DS_Store
+Thumbs.db
